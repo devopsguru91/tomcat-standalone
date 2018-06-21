@@ -1,0 +1,17 @@
+---
+# This playbook deploys war file to tomcat server
+
+- hosts: tomcat-servers
+  remote_user: ec2-user
+  become: yes
+  become_method: sudo
+
+  tasks:
+    - name: Copy WAR file to target machine's tomcat's webapp folder
+      copy:
+        src: target/CounterWebApp.war
+        dest: /opt/apache-tomcat-7.0.61/webapps
+        owner: tomcat
+        group: tomcat
+        mode: 0644
+    
