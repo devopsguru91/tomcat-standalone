@@ -32,7 +32,14 @@
 
 - name: Install Tomcat init script
   copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
-
+  
+- name: Use Modified startup.sh
+  copy: src=startup.sh dest=/usr/share/tomcat/bin/ mode=0755
+  notify: restart tomcat
+  
+- name: Use SetEnv file
+  copy: src=setenv.sh dest=/usr/share/tomcat/bin/ mode=0755  
+  notify: restart tomcat
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
 
