@@ -10,7 +10,7 @@
     - name: Copy WAR file to target machine's tomcat's webapp folder
       copy:
         src: target/CounterWebApp.war
-        dest: /opt/apache-tomcat-7.0.61/webapps
+        dest: /usr/share/tomcat/webapps
         owner: tomcat
         group: tomcat
         mode: 0644
